@@ -17,19 +17,20 @@ $a=str_replace('g.','g_a.' ,$d);
 $b=str_replace('g.','g_b.' ,$d);
 $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
-	/* retrieve version number */
 	if(file_exists($v)){
 		require_once($v);
-		echo "\nRetrieving fresh salts for WordPress v".$wp_version."\n";
+		echo "\nRetrieving fresh salts for WordPress v".$wp_version.":\n";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
-		unlink($a);unlink($b);unlink($c);
-		echo "\nThe following strings have been configured:\n";
+		unlink($a);
+		unlink($c);
+		echo "\nThe following salts have been applied:\n";
 		foreach(file($b) as $s){
 			preg_match('/^define(\'(\w+)\',\s+\'(.*)\');/', $s, $m);
 			echo $m[1].': '.$m[2];
 		}
+		unlink($b);
 	}
 }
 function wget($src, $dst){
