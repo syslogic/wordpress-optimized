@@ -1,9 +1,6 @@
 web1:
   name: wp-web
   php_extensions:
-    - mysql
-    - curl
-    - zip
   shared_writable_dirs:
     - wp-content/uploads/
   after_build:
