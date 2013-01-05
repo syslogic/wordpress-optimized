@@ -9,6 +9,7 @@ $x=dirname(__FILE__).'/wp-config.php';
 $a=dirname(__FILE__).'/wp-config_a.php';
 $b=dirname(__FILE__).'/wp-config_b.php';
 $c=dirname(__FILE__).'/wp-config_c.php';
+
 if(!file_exists($b)){
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($x,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
