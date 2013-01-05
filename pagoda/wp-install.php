@@ -3,13 +3,12 @@
 	WordPress Installer for PagodaBox v1.05
 	
 	Features:
-	
 	- retrieves unique salts on first deployment
-	
 	- the admin is properly set to read-only mode
 	
-	Copyright 2013 by Martin Zeitler
-	
+	Author:
+	Martin Zeitler, Bavaria
+	https://plus.google.com/107182394331269949090?rel=author
 	http://profiles.wordpress.org/syslogic/
 */
 $v=dirname(__FILE__).'/../wp-includes/version.php';
