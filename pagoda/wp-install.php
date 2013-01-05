@@ -7,7 +7,7 @@
 	- the admin is properly set to read-only mode
 	
 	Author:
-	Martin Zeitler, Bavaria
+	Copyright 2013 by Martin Zeitler, Bavaria
 	https://plus.google.com/107182394331269949090?rel=author
 	http://profiles.wordpress.org/syslogic/
 */
@@ -19,13 +19,14 @@ $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
 	if(file_exists($v)){
 		require_once($v);
-		echo "WordPress v".$wp_version." - Installer for PagodaBox v1.05";
+		echo "> Salted Installer for WordPress v".$wp_version."\n";
+		echo "> Copyright 2013 by Martin Zeitler, Bavaria";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
 		foreach(file($b) as $x){
 			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$x,$y);
-			echo $y[1].': '.str_replace(array('_KEY','_SALT:','_'),array(':',':',' '),$y[2])."\n";
+			echo $y[1].': '.$y[2]."\n";
 		}
 		unlink($a);unlink($b);unlink($c);
 	}
@@ -43,7 +44,7 @@ function wget($src, $dst){
 	
 	/* cURL stats */
 	$time = $info['total_time']-$info['namelookup_time']-$info['connect_time']-$info['pretransfer_time']-$info['starttransfer_time']-$info['redirect_time'];
-	echo "Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s:\n";
+	echo "Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s\n";
 	return true;
 }
 ?>
