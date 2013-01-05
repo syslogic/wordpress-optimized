@@ -23,14 +23,12 @@ if(!file_exists($b)){
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
-		unlink($a);
-		unlink($c);
 		echo "\nThe following salts have been applied:\n";
-		foreach(file($b) as $a){
-			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$a,$c);
-			echo $c[1].': '.$c[2];
+		foreach(file($b) as $x){
+			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$x,$y);
+			echo $y[1].': '.$y[2]."\n";
 		}
-		unlink($b);
+		unlink($a);unlink($b);unlink($c);
 	}
 }
 function wget($src, $dst){
