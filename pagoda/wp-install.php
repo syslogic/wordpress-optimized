@@ -19,11 +19,10 @@ $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
 	if(file_exists($v)){
 		require_once($v);
-		echo "\nRetrieving fresh salts for WordPress v".$wp_version.":\n";
+		echo "\nRetrieving fresh salts for WordPress v".$wp_version.".";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
-		echo "\nThe following salts have been applied:\n";
 		foreach(file($b) as $x){
 			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$x,$y);
 			echo $y[1].': '.$y[2]."\n";
@@ -44,7 +43,7 @@ function wget($src, $dst){
 	
 	/* cURL stats */
 	$time = $info['total_time']-$info['namelookup_time']-$info['connect_time']-$info['pretransfer_time']-$info['starttransfer_time']-$info['redirect_time'];
-	echo "Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s.\n";
+	echo "\nFetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s:\n";
 	return true;
 }
 ?>
