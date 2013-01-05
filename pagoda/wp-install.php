@@ -19,7 +19,7 @@ $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
 	if(file_exists($v)){
 		require_once($v);
-		echo "\nWordPress v".$wp_version." - Installer for PagodaBox v1.05";
+		echo "WordPress v".$wp_version." - Installer for PagodaBox v1.05";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
