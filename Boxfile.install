@@ -1,13 +1,10 @@
 web1:
   name: wp-web
-  php_extensions:
   shared_writable_dirs:
     - wp-content/uploads/
   after_build:
     - "php pagoda/wp-install.php"
+    - "rm pagoda/wp-config_a.php pagoda/wp-config_b.php pagoda/wp-config_c.php"
     - "cp pagoda/wp-config.php wp-config.php"
-    - "rm pagoda/wp-config_a.php"
-    - "rm pagoda/wp-salts.php"
-    - "rm pagoda/wp-config_b.php"
 db1:
   name: wp-db

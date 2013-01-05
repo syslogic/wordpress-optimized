@@ -5,15 +5,14 @@
 	written in 2013 by Martin Zeitler
 	http://profiles.wordpress.org/syslogic/
 */
-$config=dirname(__FILE__).'/wp-config.php';
-$config_a=dirname(__FILE__).'/wp-config_a.php';
-$salts_file=dirname(__FILE__).'/wp-salts.php';
-$config_b=dirname(__FILE__).'/wp-config_b.php';
-
-if(!file_exists($salts_file)){
-	if(wget('https://api.wordpress.org/secret-key/1.1/salt/', $salts_file)){
-		file_put_contents($config,file_get_contents($config_a)."\n".file_get_contents($salts_file)."\n".file_get_contents($config_b));
-		$lines=file($salts_file);
+$x=dirname(__FILE__).'/wp-config.php';
+$a=dirname(__FILE__).'/wp-config_a.php';
+$b=dirname(__FILE__).'/wp-config_b.php';
+$c=dirname(__FILE__).'/wp-config_c.php';
+if(!file_exists($b)){
+	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
+		file_put_contents($x,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
+		$lines=file($b);
 		foreach($lines as $line){echo $line."\n";}
 	}
 }
