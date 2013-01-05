@@ -5,8 +5,8 @@ web1:
   shared_writable_dirs:
     - wp-content/uploads/
   after_build:
-    - "cd pagoda && php ./wp-install.php"
-    - "cp ./wp-config.php ../wp-config.php"
-    - "rm -rf wp-config_*.php"
+    - "php pagoda/wp-install.php"
+    - "cp pagoda/wp-config.php wp-config.php"
+    - "rm -rf pagoda/wp-config_*.php"
 db1:
   name: wp-db
