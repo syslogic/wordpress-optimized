@@ -25,7 +25,7 @@ if(!file_exists($b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
 		foreach(file($b) as $x){
 			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$x,$y);
-			echo $y[1].': '.$y[2]."\n";
+			echo $y[1].': '.str_replace(array('_KEY','_SALT:','_'),array(':',':',' '),$y[2])."\n";
 		}
 		unlink($a);unlink($b);unlink($c);
 	}
