@@ -26,9 +26,9 @@ if(!file_exists($b)){
 		unlink($a);
 		unlink($c);
 		echo "\nThe following salts have been applied:\n";
-		foreach(file($b) as $s){
-			preg_match('/^define(\'(\w+)\',\s+\'(.*)\');/', $s, $m);
-			echo $m[1].': '.$m[2];
+		foreach(file($b) as $a){
+			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$a,$c);
+			echo $c[1].': '.$c[2];
 		}
 		unlink($b);
 	}
