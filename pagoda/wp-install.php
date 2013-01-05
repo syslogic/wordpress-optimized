@@ -13,8 +13,10 @@ $c=dirname(__FILE__).'/wp-config_c.php';
 if(!file_exists($b)){
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($x,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
-		$lines=file($b);
-		foreach($lines as $line){echo $line."\n";}
+		foreach(file($b) as $line){
+			preg_match('/^define(\'(\w+)\',\s+\'(.*)\');/', $line, $matches);
+			echo $matches[1].':'.$matches[2];
+		}
 	}
 }
 
