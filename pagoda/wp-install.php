@@ -19,10 +19,11 @@ $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
 	if(file_exists($v)){
 		require_once($v);
-		echo "> Salted Installer for WordPress v".$wp_version."\n";
-		echo "> Copyright 2013 by Martin Zeitler\n";
-		echo "> Custom IT Solution Development";
-		echo "> http://profiles.wordpress.org/syslogic/";
+		echo "+> Salted Installer for WordPress v".$wp_version."\n";
+		echo "+> Copyright 2013 by Martin Zeitler, Bavaria\n";
+		echo "+> Freelance IT Solution Development\n";
+		echo "+> https://plus.google.com/107182394331269949090?rel=author\n";
+		echo "+> http://profiles.wordpress.org/syslogic/\n";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
