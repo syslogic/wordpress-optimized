@@ -1,0 +1,16 @@
+web1:
+  name: wp-web
+  php_extensions:
+    - mysql
+    - curl
+    - zip
+  shared_writable_dirs:
+    - wp-content/uploads/
+  after_build:
+    - "php pagoda/wp-install.php"
+    - "cp pagoda/wp-config.php wp-config.php"
+    - "rm pagoda/wp-config_a.php"
+    - "rm pagoda/wp-salts.php"
+    - "rm pagoda/wp-config_b.php"
+db1:
+  name: wp-db
