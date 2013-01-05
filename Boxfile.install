@@ -6,7 +6,6 @@ web1:
     - wp-content/uploads/
   after_build:
     - "php pagoda/wp-install.php"
-    - "cp pagoda/wp-config.php wp-config.php"
     - "rm -rf pagoda/wp-config_*.php"
 db1:
   name: wp-db
