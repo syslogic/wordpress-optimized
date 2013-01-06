@@ -20,9 +20,10 @@ $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
 	if(file_exists($v)){
 		require_once($v);
-		echo "+> Salted Installer for WordPress v".$wp_version."\n";
+		echo "+> Secure Installer for WordPress v".$wp_version."\n";
 		echo "+> Copyright 2013 by Martin Zeitler, Bavaria\n";
 		echo "+> Freelance IT Solution Development\n";
+		echo "+>";
 		echo "+> https://plus.google.com/107182394331269949090\n";
 		echo "+> http://www.freelancer.com/u/syslogic.html\n";
 		echo "+> http://profiles.wordpress.org/syslogic\n\n";
