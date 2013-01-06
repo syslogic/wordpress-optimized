@@ -5,6 +5,7 @@
 	Features:
 	- retrieves unique salts on first deployment
 	- the admin is properly set to read-only mode
+	- PHP errors are logged /var/www/logs/
 	
 	Author:
 	Copyright 2013 by Martin Zeitler, Bavaria
