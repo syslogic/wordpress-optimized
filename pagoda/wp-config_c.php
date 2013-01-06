@@ -27,9 +27,26 @@ define('WPLANG', '');
  */
 define('WP_DEBUG', false);
 
-/* custom code - configuring wp-admin for read-only filesystem */
-define('DISALLOW_FILE_EDIT',true);
-define('DISALLOW_FILE_MODS',true);
+/* start: custom code */
+
+		/*configuring wp-admin for read-only filesystem */
+		define('DISALLOW_FILE_EDIT',true);
+		define('DISALLOW_FILE_MODS',true);
+		
+		/* error reporting */
+		ini_set('display_errors', 'On');
+		error_reporting(E_ALL | E_NOTICE);
+		
+		/* custom error handler */
+		function pagoda_error_handler($errno, $errstr, $filename, $line) {
+			$logfile = '/var/www/logs/WordPress_'.date('Y-m-d').'.log';
+			if(!file_exists($logfile)){touch($logfile);}
+			$entry = date('[H:i:s]').'[ '.str_pad($errno, 4, ' ', STR_PAD_LEFT).' > '.$filename.' @ '.$line.']'.$errstr."\n";
+			file_put_contents($logfile, $entry, FILE_APPEND);
+		}
+		set_error_handler('pagoda_error_handler');
+	
+/* end: custom code */
 
 /* That's all, stop editing! Happy blogging. */
 
