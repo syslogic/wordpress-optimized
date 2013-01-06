@@ -39,6 +39,8 @@ if(!file_exists($d)){
 	}
 }
 else{
+	if(file_exists($a)){unlink($a);}
+	if(file_exists($c)){unlink($c);}
 	echo '-> The file wp-config.php is present - just proceeding with the next hook.';
 }
 function wget($src, $dst){
