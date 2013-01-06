@@ -3,9 +3,17 @@
 	Cloud-Installer for WordPress v3.5
 	
 	Features:
-	- retrieves unique salts on first deployment
-	- the admin is properly set to read-only mode
+	
+	- generates a wp-config.php with unique salts on first deployment
+		(which can be downloaded via SSH from /var/www/logs/wp-config.php)
+	
+	- the admin is set to read-only mode (= no useless buttons)
+	
 	- PHP errors are logged /var/www/logs/
+	
+	Good to know:
+	
+	- if a pagoda/wp-config.php file is present, the installer will exit.
 	
 	Author:
 	Copyright 2013 by Martin Zeitler, Bavaria
