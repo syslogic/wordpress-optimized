@@ -20,12 +20,12 @@ $c=str_replace('g.','g_c.' ,$d);
 if(!file_exists($b)){
 	if(file_exists($v)){
 		require_once($v);
-		echo "+> Secure Installer for WordPress v".$wp_version."\n+>\n";
+		echo "+> Secure Installer for WordPress v".$wp_version."\n->\n";
 		echo "+> Copyright 2013 by Martin Zeitler, Bavaria\n";
-		echo "+> Freelance IT Solution Development\n+>\n";
+		echo "+> Freelance IT Solution Development\n->\n";
 		echo "+> https://plus.google.com/107182394331269949090\n";
 		echo "+> http://www.freelancer.com/u/syslogic.html\n";
-		echo "+> http://profiles.wordpress.org/syslogic\n+>\n";
+		echo "+> http://profiles.wordpress.org/syslogic\n->\n";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
@@ -49,7 +49,7 @@ function wget($src, $dst){
 	
 	/* cURL stats */
 	$time = $info['total_time']-$info['namelookup_time']-$info['connect_time']-$info['pretransfer_time']-$info['starttransfer_time']-$info['redirect_time'];
-	echo "+> Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s\n+>\n";
+	echo "+> Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s\n->\n";
 	return true;
 }
 ?>
