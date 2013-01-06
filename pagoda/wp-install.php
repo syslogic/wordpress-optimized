@@ -22,8 +22,9 @@ if(!file_exists($b)){
 		echo "+> Salted Installer for WordPress v".$wp_version."\n";
 		echo "+> Copyright 2013 by Martin Zeitler, Bavaria\n";
 		echo "+> Freelance IT Solution Development\n";
-		echo "+> https://plus.google.com/107182394331269949090?rel=author\n";
-		echo "+> http://profiles.wordpress.org/syslogic/\n";
+		echo "+> https://plus.google.com/107182394331269949090\n";
+		echo "+> http://www.freelancer.com/u/syslogic.html\n";
+		echo "+> http://profiles.wordpress.org/syslogic\n\n";
 	}
 	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
 		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
@@ -47,7 +48,7 @@ function wget($src, $dst){
 	
 	/* cURL stats */
 	$time = $info['total_time']-$info['namelookup_time']-$info['connect_time']-$info['pretransfer_time']-$info['starttransfer_time']-$info['redirect_time'];
-	echo "> Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s\n";
+	echo "+> Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s\n";
 	return true;
 }
 ?>
