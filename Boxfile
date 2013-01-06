@@ -2,9 +2,11 @@ web1:
   name: wp-web
   php_extensions:
     - mysql
+    - exif
     - gd
   shared_writable_dirs:
     - wp-content/uploads/
+    - logs/
   after_build:
     - "cp pagoda/wp-config.php wp-config.php"
 db1:
