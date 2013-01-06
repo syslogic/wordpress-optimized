@@ -1,6 +1,6 @@
 <?php
 /*
-	WordPress Installer for PagodaBox v1.05
+	Cloud-Installer for WordPress v3.5
 	
 	Features:
 	- retrieves unique salts on first deployment
@@ -17,24 +17,29 @@ $d=dirname(__FILE__).'/wp-config.php';
 $a=str_replace('g.','g_a.' ,$d);
 $b=str_replace('g.','g_b.' ,$d);
 $c=str_replace('g.','g_c.' ,$d);
-if(!file_exists($b)){
-	if(file_exists($v)){
-		require_once($v);
-		echo "+> Secure Installer for WordPress v".$wp_version."\n->\n";
-		echo "+> Copyright 2013 by Martin Zeitler, Bavaria\n";
-		echo "+> Freelance IT Solution Development\n->\n";
-		echo "+> https://plus.google.com/107182394331269949090\n";
-		echo "+> http://www.freelancer.com/u/syslogic.html\n";
-		echo "+> http://profiles.wordpress.org/syslogic\n->\n";
-	}
-	if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
-		file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
-		foreach(file($b) as $x){
-			preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$x,$y);
-			echo $y[1].': '.$y[2]."\n";
+if(file_exists($v)){
+	require_once($v);
+	echo "+> Cloud-Installer for WordPress v".$wp_version."\n->\n";
+	echo "+> Copyright 2013 by Martin Zeitler, Bavaria\n";
+	echo "+> Freelance IT Solution Development\n->\n";
+	echo "+> https://plus.google.com/107182394331269949090\n";
+	echo "+> http://www.freelancer.com/u/syslogic.html\n";
+	echo "+> http://profiles.wordpress.org/syslogic\n->\n";
+}
+if(!file_exists($d)){
+	if(!file_exists($b)){
+		if(wget('https://api.wordpress.org/secret-key/1.1/salt/',$b)){
+			file_put_contents($d,file_get_contents($a)."\n".file_get_contents($b)."\n".file_get_contents($c));
+			foreach(file($b) as $x){
+				preg_match("/^define\('(\w+)',\s+'(.*)'\);/",$x,$y);
+				echo '-> '.$y[1].': '.$y[2]."\n";
+			}
+			unlink($a);unlink($b);unlink($c);
 		}
-		unlink($a);unlink($b);unlink($c);
 	}
+}
+else{
+	echo '-> The file wp-config.php is present - just proceeding with the next hook.';
 }
 function wget($src, $dst){
 	$fp = fopen($dst, 'w');
