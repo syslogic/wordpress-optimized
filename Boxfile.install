@@ -3,8 +3,10 @@ web1:
   php_extensions:
     - curl
   shared_writable_dirs:
-    - wp-content/uploads/
+    - logs/
   after_build:
     - "php pagoda/wp-install.php"
+  after_deploy:
+    - "cp pagoda/wp-config.php /var/www/logs/wp-config.php"
 db1:
   name: wp-db
